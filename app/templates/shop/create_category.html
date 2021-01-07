@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ super() }}Create Category
+{% endblock title %}
+    
+{% block content %}
+
+
+<form action="{{ url_for('shop.create_category') }}" method="POST">
+    <label for="category_name">Create Category</label>
+      <div class="form-group">
+        <input type="text" class="form-control" name="category_name" placeholder="Category Name">
+      </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+{% endblock content %}
+      
+    

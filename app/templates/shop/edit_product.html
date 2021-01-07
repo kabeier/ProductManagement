@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ super() }}Create Product
+{% endblock title %}
+    
+{% block content %}
+<form action="{{ url_for('shop.edit_product2', id=p.id) }}" method="POST">
+    <label for="category_name">Name</label>
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" value="{{p.name}}">
+      </div>
+    </label>
+    <label for="category_name">Price</label>
+      <div class="form-group">
+        <input type="number" step=".01"  class="form-control" name="price" value="{{p.price}}">
+      </div>
+    </label>
+    <label for="category_name">Tax</label>
+      <div class="form-group">
+        <input type="number"  step=".01" class="form-control" name="tax" placeholder="Tax" value="{{p.tax}}">
+    </div>
+      </div>
+    </label>
+    <label for="category_name">Image URL</label>
+    <div class="form-group">
+      <input type="text" class="form-control" name="image" value="{{p.image}}">
+    </div>
+    </div>
+  </label>
+  <label for="removeID">Category</label>
+  <div class="form-group">
+      <select class="custom-select" name="cat" id="cat">
+          {%for cat in cats%}
+              {%if p.id==cat.id%}
+              <option selected value="{{cat.id}}">{{cat.name}}</option>
+              {%else%}
+              <option value="{{cat.id}}">{{cat.name}}</option>
+              {%endif%}
+          {%endfor%}
+        </select>
+    </div>
+</label>
+  <label for="category_name">Description</label>
+  <div class="form-group">
+    <textarea class="form-control" name="desc"  >{{p.description}}</textarea>
+  </div>
+
+</label>
+
+    <input type="submit" class="btn btn-primary">
+
+
+</form>
+
+{% endblock content %}
+      
+    

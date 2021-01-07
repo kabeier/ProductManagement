@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ super() }}Remove Product
+{% endblock title %}
+    
+{% block content %}
+
+
+<form action="{{ url_for('shop.remove_product') }}" method="POST">
+    <label for="removeID">Remove Product</label>
+    <div class="form-group">
+        <select class="custom-select" name="removeID" id="removeID">
+            <option selected>Choose...</option>
+            {%for prod in prods%}
+                {{prod}}
+                <option value="{{prod.id}}">{{prod.name}}</option>
+            {%endfor%}
+          </select>
+      </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+{% endblock content %}
+      
+    

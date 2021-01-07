@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">Da Shoppe</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item {% if active_page == 'main.index' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('main.index') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if current_user.is_authenticated and current_user.role_id>1 %}
+            <li class="nav-item {% if active_page == 'shop.create_category'%}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('shop.create_category') }}">Create Category </a>
+            </li>
+            <li class="nav-item {% if active_page == 'shop.remove_category'%}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('shop.remove_category') }}">Remove Category </a>
+            </li>
+            <li class="nav-item {% if active_page == 'shop.create_product'%}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('shop.create_product') }}">Create Product </a>
+            </li>
+            <li class="nav-item {% if active_page == 'shop.edit_product'%}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('shop.edit_product') }}">Edit Product </a>
+            </li>
+            <li class="nav-item {% if active_page == 'shop.remove_product'%}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('shop.remove_product') }}">Remove Product </a>
+            </li>
+            {%endif%}
+
+        </ul>
+        <ul class="navbar-nav m1-auto">
+            {% if not current_user.is_authenticated %}
+                <li class="nav-item {% if active_page == 'authentication.login' %}active{% endif %}">
+                    <a href="{{ url_for('authentication.login') }}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item {% if active_page == 'authentication.register' %}active{% endif %}">
+                    <a href="{{ url_for('authentication.register') }}" class="nav-link">Register</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('authentication.logout') }}" class="nav-link">Logout</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

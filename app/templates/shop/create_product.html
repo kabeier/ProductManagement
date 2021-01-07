@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ super() }}Create Product
+{% endblock title %}
+    
+{% block content %}
+
+
+<form action="{{ url_for('shop.create_product') }}" method="POST">
+    <label for="category_name">Name</label>
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="Name">
+      </div>
+    </label>
+    <label for="category_name">Price</label>
+      <div class="form-group">
+        <input type="number" step=".01"  class="form-control" name="price" placeholder="price">
+      </div>
+    </label>
+    <label for="category_name">Tax</label>
+      <div class="form-group">
+        <input type="number"  step=".01" class="form-control" name="tax" placeholder="Tax">
+      </div>
+    </label>
+    <label for="category_name">Image URL</label>
+    <div class="form-group">
+      <input type="text" class="form-control" name="image" placeholder="Image URL">
+    </div>
+  </label>
+  <label for="removeID">Category</label>
+  <div class="form-group">
+      <select class="custom-select" name="cat" id="cat">
+          <option selected>Choose...</option>
+          {%for cat in cats%}
+              {{cat}}
+              <option value="{{cat.id}}">{{cat.name}}</option>
+          {%endfor%}
+        </select>
+    </div>
+</label>
+  <label for="category_name">Description</label>
+  <div class="form-group">
+    <textarea class="form-control" name="desc" placeholder="Description">Description</textarea>
+  </div>
+
+</label>
+
+    <input type="submit" class="btn btn-primary">
+
+
+</form>
+
+{% endblock content %}
+      
+    

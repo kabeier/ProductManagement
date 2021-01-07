@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ super() }}Selcet Product to Edit
+{% endblock title %}
+    
+{% block content %}
+
+
+<form action="{{ url_for('shop.edit_product') }}" method="POST">
+    <label for="selectID">Selcet Product</label>
+    <div class="form-group">
+        <select class="custom-select" name="selectID" id="selectID">
+            <option selected>Choose...</option>
+            {%for prod in prods%}
+                {{prod}}
+                <option value="{{prod.id}}">{{prod.name}}</option>
+            {%endfor%}
+          </select>
+      </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+{% endblock content %}
+      
+    
